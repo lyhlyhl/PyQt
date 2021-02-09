@@ -11,7 +11,7 @@ Created on 2019年8月17日
 import sys
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QDialog, QApplication, QWidget
-from qtpy import QtWidgets
+from PyQt5 import QtWidgets
 import pyqtgraph as pg
 
 from PyQtGraph.Data.graphAnalysis import graph_Form
