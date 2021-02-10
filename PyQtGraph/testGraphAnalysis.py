@@ -14,7 +14,7 @@ from PyQt5.QtWidgets import QDialog, QApplication, QWidget
 from PyQt5 import QtWidgets
 import pyqtgraph as pg
 
-from PyQtGraph.Data.graphAnalysis import graph_Form
+from Data.graphAnalysis import graph_Form
 
 
 class CustomViewBox(pg.ViewBox):
