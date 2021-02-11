@@ -45,9 +45,10 @@ class MyWindow(QMainWindow, Ui_Form):
 
     #这个函数很神奇，a的传参是怎么传的，我感觉是一个鼠标一样
     #其他的基本上很简单，就是获得鼠标位置，显示出来
+    #这个 a是自带的参数，onMouseMoved是被重写的
     def onMouseMoved(self, a):
         if self.graphicsView.plotItem.vb.mapSceneToView(a):
-            point =self.graphicsView.plotItem.vb.mapSceneToView(a)
+            point =self.graphicsView.plotItem.vb.mapSceneToView(a)  #实际上就是一个坐标系的变幻
             self.label.setHtml("<p style='color:white'>横坐标：{0}</p>".format(point.x()))
 if __name__ == '__main__':
     app = QApplication(sys.argv)
