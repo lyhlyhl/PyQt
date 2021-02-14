@@ -14,6 +14,7 @@ from PyQt5 import QtWidgets
 import pyqtgraph as pg
 from Data.graphTest import graph_Form
 
+#新建了一个viewBox的子类，用于各种函数的回调
 class CustomViewBox(pg.ViewBox):
     def __init__(self, *args, **kwds):
         pg.ViewBox.__init__(self, *args, **kwds)
@@ -31,27 +32,31 @@ class CustomViewBox(pg.ViewBox):
         # pg.ViewBox.wheelEvent(self, ev, axis)
         ev.ignore()
 
+#这个类用于画图，继承自之前的那个格式grap_Form
 class graphAnalysis(QDialog,graph_Form):
     def __init__(self):
         super(graphAnalysis, self).__init__()
         self.setupUi(self)
-        self.pushButton_7.clicked.connect(self.test)
-        self.tabWidget.clear()
+        self.pushButton_7.clicked.connect(self.test)    #信号绑定到test函数
+        self.tabWidget.clear()  #不懂这个地方在清除什么
 
     def test(self):
         tab1 = QtWidgets.QWidget()
         scrollArea = QtWidgets.QScrollArea(tab1)
         scrollArea.setMinimumSize(984,550)
         scrollArea.setWidgetResizable(True)
+
         labelsContainer = QWidget()
         labelsContainer.setMinimumSize(0,1500)
         scrollArea.setWidget(labelsContainer)
-        layout = QtWidgets.QVBoxLayout(labelsContainer)
+        layout = QtWidgets.QVBoxLayout(labelsContainer) #布局
+
         time = ['2019-04-20 08:09:00', '2019-04-20 08:09:00', '2019-04-20 08:09:00', '2019-04-20 08:09:00']
         value = [1.2, 2, 1, 4]
         xdict = dict(enumerate(time))
         ticks = [list(zip(range(4), tuple(time)))]
         vb = CustomViewBox()
+
         plt = pg.PlotWidget(title="标题这里填写",viewBox=vb)
         plt.setBackground(background=None)
         plt.plot(list(xdict.keys()), value)

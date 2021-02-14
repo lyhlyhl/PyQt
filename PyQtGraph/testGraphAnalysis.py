@@ -13,7 +13,6 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QDialog, QApplication, QWidget
 from PyQt5 import QtWidgets
 import pyqtgraph as pg
-
 from Data.graphAnalysis import graph_Form
 
 
